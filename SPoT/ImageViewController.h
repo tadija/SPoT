@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ImageViewController.h
 //  SPoT
 //
 //  Created by Marko Tadić on 18.9.13..
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ImageViewController : UIViewController
+
+@property (nonatomic, strong) NSURL *imageURL;
 
 @end
