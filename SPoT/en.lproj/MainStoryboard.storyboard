@@ -10,7 +10,7 @@
         <scene sceneID="qFf-SA-Ak2">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="0Vm-cg-249" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="PQD-5j-YQH">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-712" y="1338"/>
         </scene>
-        <!--Stanford TagsTVC-->
+        <!--Stanford TagsTVC - Stanford photos-->
         <scene sceneID="IJf-F7-Nl5">
             <objects>
                 <tableViewController id="5mN-Rg-Ydb" customClass="StanfordTagsTVC" sceneMemberID="viewController">
@@ -68,16 +68,16 @@
                             <outlet property="delegate" destination="5mN-Rg-Ydb" id="NXI-4i-4r4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UOK-ew-5rX"/>
+                    <navigationItem key="navigationItem" title="Stanford photos" id="UOK-ew-5rX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa0-Oy-gTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462" y="978"/>
         </scene>
-        <!--Flickr PhotoTVC-->
+        <!--Stanford PhotosTVC-->
         <scene sceneID="NUj-73-644">
             <objects>
-                <tableViewController id="OgI-M7-pLF" customClass="FlickrPhotoTVC" sceneMemberID="viewController">
+                <tableViewController id="OgI-M7-pLF" customClass="StanfordPhotosTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4fh-Oj-pVL">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="954" y="981"/>
         </scene>
-        <!--Flickr PhotoTVC-->
+        <!--Recent PhotosTVC - Recent photos-->
         <scene sceneID="Nzy-0C-lfL">
             <objects>
-                <tableViewController id="ny8-e8-AeH" customClass="FlickrPhotoTVC" sceneMemberID="viewController">
+                <tableViewController id="ny8-e8-AeH" customClass="RecentPhotosTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Uf-L4-EUq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,13 @@
                             <outlet property="delegate" destination="ny8-e8-AeH" id="EeW-CG-Koz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KK7-Mw-XNB"/>
+                    <navigationItem key="navigationItem" title="Recent photos" id="KK7-Mw-XNB">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="h8j-dL-aCH">
+                            <connections>
+                                <action selector="clearRecents:" destination="ny8-e8-AeH" id="8Qe-qN-kcS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Pw-GM-3tL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,6 +188,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVc-Da-yyM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -201,11 +208,11 @@
             </objects>
             <point key="canvasLocation" x="1492" y="1368"/>
         </scene>
-        <!--Navigation Controller - Featured-->
+        <!--Navigation Controller-->
         <scene sceneID="N0q-Ni-JgK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CLA-Q8-mvE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Featured" id="7yY-Vh-u8X"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="7yY-Vh-u8X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nTN-YS-s70">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -220,11 +227,11 @@
             </objects>
             <point key="canvasLocation" x="-64" y="978"/>
         </scene>
-        <!--Navigation Controller - Recent-->
+        <!--Navigation Controller-->
         <scene sceneID="Upg-bb-2Ik">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QzW-CS-iEE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recent" id="1DV-ia-QNP"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="1DV-ia-QNP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rdj-AE-e23">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

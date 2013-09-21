@@ -10,6 +10,8 @@
 
 #define FLICKR_PHOTO_TITLE @"title"
 #define FLICKR_PHOTO_DESCRIPTION @"description._content"
+#define FLICKR_PHOTO_DESCRIPTION1 @"description"
+#define FLICKR_PHOTO_DESCRIPTION2 @"_content"
 #define FLICKR_PLACE_NAME @"_content"
 #define FLICKR_PHOTO_ID @"id"
 #define FLICKR_LATITUDE @"latitude"

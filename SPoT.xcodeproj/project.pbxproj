@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B2C6FAF17EB9A44009C90C4 /* FlickrTagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */; };
 		8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */; };
+		8B2C6FB817EDE051009C90C4 /* RecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */; };
+		8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */; };
 		8BAC42BF17EA46F400A9CC7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC42BE17EA46F400A9CC7C /* UIKit.framework */; };
 		8BAC42C117EA46F400A9CC7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC42C017EA46F400A9CC7C /* Foundation.framework */; };
 		8BAC42C317EA46F400A9CC7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC42C217EA46F400A9CC7C /* CoreGraphics.framework */; };
@@ -29,6 +31,10 @@
 		8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTagsTVC.m; sourceTree = "<group>"; };
 		8B2C6FB317EBB689009C90C4 /* StanfordTagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordTagsTVC.h; sourceTree = "<group>"; };
 		8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordTagsTVC.m; sourceTree = "<group>"; };
+		8B2C6FB617EDE051009C90C4 /* RecentPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotosTVC.h; sourceTree = "<group>"; };
+		8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotosTVC.m; sourceTree = "<group>"; };
+		8B2C6FB917EDE4FE009C90C4 /* StanfordPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordPhotosTVC.h; sourceTree = "<group>"; };
+		8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosTVC.m; sourceTree = "<group>"; };
 		8BAC42BB17EA46F400A9CC7C /* SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAC42BE17EA46F400A9CC7C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BAC42C017EA46F400A9CC7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +109,10 @@
 				8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */,
 				8BAC42E717EA51F900A9CC7C /* FlickrPhotoTVC.h */,
 				8BAC42E817EA51F900A9CC7C /* FlickrPhotoTVC.m */,
+				8B2C6FB917EDE4FE009C90C4 /* StanfordPhotosTVC.h */,
+				8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */,
+				8B2C6FB617EDE051009C90C4 /* RecentPhotosTVC.h */,
+				8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */,
 				8BAC42E117EA49F900A9CC7C /* ImageViewController.h */,
 				8BAC42E217EA49F900A9CC7C /* ImageViewController.m */,
 				8BAC42EA17EA53B400A9CC7C /* FlickrFetcher */,
@@ -208,8 +218,10 @@
 				8BAC42CF17EA46F400A9CC7C /* AppDelegate.m in Sources */,
 				8BAC42E317EA49F900A9CC7C /* ImageViewController.m in Sources */,
 				8BAC42E917EA51F900A9CC7C /* FlickrPhotoTVC.m in Sources */,
+				8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */,
 				8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */,
 				8BAC42EE17EA53B400A9CC7C /* FlickrFetcher.m in Sources */,
+				8B2C6FB817EDE051009C90C4 /* RecentPhotosTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
