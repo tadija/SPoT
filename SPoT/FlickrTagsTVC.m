@@ -10,6 +10,7 @@
 #import "FlickrFetcher.h"
 
 @interface FlickrTagsTVC ()
+@property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSDictionary *tagsWithPhotos;
 @end
 
@@ -28,7 +29,7 @@
     for (NSDictionary *photo in self.photos) {
         for (NSString *tag in [[photo[FLICKR_TAGS] description] componentsSeparatedByString:@" "]) {
             if (![@[@"cs193pspot", @"portrait", @"landscape"] containsObject:tag]) {
-                NSMutableArray *photosWithTag = [tagsWithPhotos objectForKey:tag];
+                NSMutableArray *photosWithTag = tagsWithPhotos[tag];
                 if (!photosWithTag) {
                     photosWithTag = [NSMutableArray array];
                     tagsWithPhotos[tag] = photosWithTag;
@@ -38,6 +39,7 @@
         }
     }
     self.tagsWithPhotos = tagsWithPhotos;
+    self.tags = [[tagsWithPhotos allKeys] sortedArrayUsingSelector:@selector(compare:)];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -47,8 +49,8 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show photos with tag"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(setPhotos:)]) {
-                    NSString *tag = [[self.tagsWithPhotos allKeys] objectAtIndex:indexPath.row];
-                    NSArray *photos = self.tagsWithPhotos[tag];
+                    NSString *tag = self.tags[indexPath.row];
+                    NSArray *photos = [self.tagsWithPhotos[tag] sortedArrayUsingDescriptors:@[[[NSSortDescriptor alloc] initWithKey:FLICKR_PHOTO_TITLE ascending:YES]]];
                     [segue.destinationViewController performSelector:@selector(setPhotos:) withObject:photos];
                     [segue.destinationViewController setTitle:[tag capitalizedString]];
                 }
@@ -61,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.tagsWithPhotos count];
+    return [self.tags count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +72,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSString *tag = [[self.tagsWithPhotos allKeys] objectAtIndex:indexPath.row];
+    NSString *tag = self.tags[indexPath.row];
     int photoCount = [self.tagsWithPhotos[tag] count];
     cell.textLabel.text = [tag capitalizedString];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photo%@", photoCount, photoCount > 1 ? @"s" : @""];

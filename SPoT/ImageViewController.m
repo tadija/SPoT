@@ -7,13 +7,45 @@
 //
 
 #import "ImageViewController.h"
+#import "AttributedStringVC.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
+@property (strong, nonatomic) UIPopoverController *urlPopover;
 @end
 
 @implementation ImageViewController
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"Show URL"]) {
+        return (self.imageURL && !self.urlPopover.popoverVisible) ? YES : NO;
+    } else {
+        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Show URL"]) {
+        if ([segue.destinationViewController isKindOfClass:[AttributedStringVC class]]) {
+            AttributedStringVC *asvc = (AttributedStringVC *)segue.destinationViewController;
+            asvc.text = [[NSAttributedString alloc] initWithString:[self.imageURL description]];
+            if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]) {
+                self.urlPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+            }
+            
+        }
+    }
+}
+
+- (void)setTitle:(NSString *)title
+{
+    super.title = title;
+    self.titleBarButtonItem.title = title;
+}
 
 - (void)setImageURL:(NSURL *)imageURL
 {
@@ -53,7 +85,8 @@
     [super viewDidLoad];
     [self.scrollView addSubview:self.imageView];
     self.scrollView.delegate = self;
-    [self resetImage];    
+    [self resetImage];
+    self.titleBarButtonItem.title = self.title;
 }
 
 - (void)viewDidLayoutSubviews
