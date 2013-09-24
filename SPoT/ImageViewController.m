@@ -9,42 +9,28 @@
 #import "ImageViewController.h"
 #import "AttributedStringVC.h"
 
-@interface ImageViewController () <UIScrollViewDelegate>
+@interface ImageViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
 @property (strong, nonatomic) UIPopoverController *urlPopover;
 @end
 
 @implementation ImageViewController
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"Show URL"]) {
-        return (self.imageURL && !self.urlPopover.popoverVisible) ? YES : NO;
-    } else {
-        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"Show URL"]) {
-        if ([segue.destinationViewController isKindOfClass:[AttributedStringVC class]]) {
-            AttributedStringVC *asvc = (AttributedStringVC *)segue.destinationViewController;
-            asvc.text = [[NSAttributedString alloc] initWithString:[self.imageURL description]];
-            if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]) {
-                self.urlPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
-            }
-            
-        }
-    }
-}
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 
 - (void)setTitle:(NSString *)title
 {
     super.title = title;
     self.titleBarButtonItem.title = title;
+}
+
+- (UIImageView *)imageView
+{
+    if (!_imageView) _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    return _imageView;
 }
 
 - (void)setImageURL:(NSURL *)imageURL
@@ -69,16 +55,50 @@
     }
 }
 
-- (UIImageView *)imageView
+#pragma mark Segues
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    if (!_imageView) _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    return _imageView;
+    if ([identifier isEqualToString:@"Show URL"]) {
+        return (self.imageURL && !self.urlPopover.popoverVisible) ? YES : NO;
+    } else {
+        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    }
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    return self.imageView;
+    if ([segue.identifier isEqualToString:@"Show URL"]) {
+        if ([segue.destinationViewController isKindOfClass:[AttributedStringVC class]]) {
+            AttributedStringVC *asvc = (AttributedStringVC *)segue.destinationViewController;
+            asvc.text = [[NSAttributedString alloc] initWithString:[self.imageURL description]];
+            if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]]) {
+                self.urlPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+            }
+            
+        }
+    }
 }
+
+#pragma mark Set button for master popover
+
+- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+    if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+    if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+    self.toolbar.items = toolbarItems;
+    _splitViewBarButtonItem = splitViewBarButtonItem;
+}
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if (splitViewBarButtonItem != _splitViewBarButtonItem) {
+        [self handleSplitViewBarButtonItem:splitViewBarButtonItem];
+    }
+}
+
+#pragma mark UIViewcontroller lifecycle
 
 - (void)viewDidLoad
 {
@@ -87,6 +107,7 @@
     self.scrollView.delegate = self;
     [self resetImage];
     self.titleBarButtonItem.title = self.title;
+    [self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 }
 
 - (void)viewDidLayoutSubviews
@@ -98,6 +119,11 @@
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.zoomScale = minScale;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView

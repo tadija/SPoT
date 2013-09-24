@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
 		8B2C6FAD17EB9A44009C90C4 /* FlickrTagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTagsTVC.h; sourceTree = "<group>"; };
 		8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTagsTVC.m; sourceTree = "<group>"; };
 		8B2C6FB317EBB689009C90C4 /* StanfordTagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordTagsTVC.h; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 				8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */,
 				8BAC42E117EA49F900A9CC7C /* ImageViewController.h */,
 				8BAC42E217EA49F900A9CC7C /* ImageViewController.m */,
+				8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */,
 				8BAC42EA17EA53B400A9CC7C /* FlickrFetcher */,
 				8BAC42C517EA46F400A9CC7C /* Supporting Files */,
 			);
