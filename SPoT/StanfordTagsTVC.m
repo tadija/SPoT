@@ -8,6 +8,7 @@
 
 #import "StanfordTagsTVC.h"
 #import "FlickrFetcher.h"
+#import "UIApplication+NetworkActivity.h"
 
 @implementation StanfordTagsTVC
 
@@ -23,7 +24,9 @@
     [self.refreshControl beginRefreshing];
     dispatch_queue_t loaderQ = dispatch_queue_create("stanford photos loader", NULL);
     dispatch_async(loaderQ, ^{
+        [[UIApplication sharedApplication] showNetworkActivityIndicator];
         NSArray *stanfordPhotos = [FlickrFetcher stanfordPhotos];
+        [[UIApplication sharedApplication] hideNetworkActivityIndicator];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.photos = stanfordPhotos;
             [self.refreshControl endRefreshing];

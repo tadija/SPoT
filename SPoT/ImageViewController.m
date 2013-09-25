@@ -8,6 +8,7 @@
 
 #import "ImageViewController.h"
 #import "AttributedStringVC.h"
+#import "UIApplication+NetworkActivity.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -52,9 +53,9 @@
         dispatch_queue_t imageFetchQ = dispatch_queue_create("image downloader", NULL);
         dispatch_async(imageFetchQ, ^{
             //[NSThread sleepForTimeInterval:1.0];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            [[UIApplication sharedApplication] showNetworkActivityIndicator];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [[UIApplication sharedApplication] hideNetworkActivityIndicator];
             UIImage *image = [[UIImage alloc] initWithData:imageData];            
             if (self.imageURL == imageURL) {
                 dispatch_async(dispatch_get_main_queue(), ^{
