@@ -83,6 +83,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stanford photos" id="BVF-yW-W9i"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="TQk-Dr-5PX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohh-eI-Fnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -197,11 +200,11 @@
             <objects>
                 <viewController id="cW4-ql-g35" customClass="AttributedStringVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYf-2k-imV">
-                        <rect key="frame" x="0.0" y="20" width="300" height="420"/>
+                        <rect key="frame" x="0.0" y="20" width="300" height="220"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKv-I3-07s">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="220"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -244,6 +247,10 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="960"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="txv-dm-tAi">
+                                <rect key="frame" x="365" y="484" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBl-Wx-sq6">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -267,14 +274,17 @@
                             <constraint firstItem="mBl-Wx-sq6" firstAttribute="top" secondItem="7YX-3Z-jaX" secondAttribute="top" type="default" id="Jx6-pk-0J0"/>
                             <constraint firstItem="0ha-i3-qhT" firstAttribute="trailing" secondItem="mBl-Wx-sq6" secondAttribute="trailing" type="default" id="Mg6-dA-Ia2"/>
                             <constraint firstItem="0ha-i3-qhT" firstAttribute="bottom" secondItem="7YX-3Z-jaX" secondAttribute="bottom" type="default" id="USy-k3-ZO7"/>
+                            <constraint firstItem="txv-dm-tAi" firstAttribute="leading" secondItem="7YX-3Z-jaX" secondAttribute="leading" constant="365" id="WRh-5F-fGg"/>
                             <constraint firstItem="0ha-i3-qhT" firstAttribute="trailing" secondItem="7YX-3Z-jaX" secondAttribute="trailing" type="default" id="kM1-20-LQD"/>
                             <constraint firstItem="0ha-i3-qhT" firstAttribute="leading" secondItem="7YX-3Z-jaX" secondAttribute="leading" type="default" id="nEs-xY-rlX"/>
+                            <constraint firstItem="txv-dm-tAi" firstAttribute="centerY" secondItem="7YX-3Z-jaX" secondAttribute="centerY" type="default" id="u2p-yc-ttO"/>
                             <constraint firstItem="mBl-Wx-sq6" firstAttribute="leading" secondItem="0ha-i3-qhT" secondAttribute="leading" type="default" id="yXT-mh-aJ1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kAP-lA-dSx"/>
                     <connections>
                         <outlet property="scrollView" destination="0ha-i3-qhT" id="Dfr-zA-2jW"/>
+                        <outlet property="spinner" destination="txv-dm-tAi" id="7cj-nE-6vo"/>
                         <outlet property="titleBarButtonItem" destination="wh7-eC-w5o" id="7hj-eL-OOe"/>
                         <outlet property="toolbar" destination="mBl-Wx-sq6" id="FvJ-dK-YNX"/>
                     </connections>
@@ -328,6 +338,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Wwb-CW-8PW"/>
+        <segue reference="LSb-IS-uhc"/>
     </inferredMetricsTieBreakers>
 </document>

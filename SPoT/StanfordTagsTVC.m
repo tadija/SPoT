@@ -14,7 +14,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.photos = [FlickrFetcher stanfordPhotos];
+    [self loadStanfordPhotosFromFlickr];
+    [self.refreshControl addTarget:self action:@selector(loadStanfordPhotosFromFlickr) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)loadStanfordPhotosFromFlickr
+{
+    [self.refreshControl beginRefreshing];
+    dispatch_queue_t loaderQ = dispatch_queue_create("stanford photos loader", NULL);
+    dispatch_async(loaderQ, ^{
+        NSArray *stanfordPhotos = [FlickrFetcher stanfordPhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photos = stanfordPhotos;
+            [self.refreshControl endRefreshing];
+        });
+    });
 }
 
 @end

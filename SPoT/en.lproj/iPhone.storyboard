@@ -69,6 +69,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stanford photos" id="UOK-ew-5rX"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ECC-fe-h0g">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa0-Oy-gTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,11 +193,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A01-N9-JfQ">
+                                <rect key="frame" x="141" y="165" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pVc-Da-yyM" firstAttribute="top" secondItem="bHA-fc-yIU" secondAttribute="top" type="default" id="13Z-3Y-nQe"/>
+                            <constraint firstItem="A01-N9-JfQ" firstAttribute="centerY" secondItem="pVc-Da-yyM" secondAttribute="centerY" type="default" id="C3F-of-rno"/>
                             <constraint firstItem="pVc-Da-yyM" firstAttribute="trailing" secondItem="bHA-fc-yIU" secondAttribute="trailing" type="default" id="OSD-Xc-kQq"/>
+                            <constraint firstItem="A01-N9-JfQ" firstAttribute="leading" secondItem="bHA-fc-yIU" secondAttribute="leading" constant="141" id="QtE-Tr-kA4"/>
                             <constraint firstItem="pVc-Da-yyM" firstAttribute="bottom" secondItem="bHA-fc-yIU" secondAttribute="bottom" type="default" id="YDP-lq-eCx"/>
                             <constraint firstItem="pVc-Da-yyM" firstAttribute="leading" secondItem="bHA-fc-yIU" secondAttribute="leading" type="default" id="l1m-xD-LdW"/>
                         </constraints>
@@ -202,6 +211,7 @@
                     <navigationItem key="navigationItem" id="T6z-Fa-GlK"/>
                     <connections>
                         <outlet property="scrollView" destination="pVc-Da-yyM" id="gVp-aF-BNx"/>
+                        <outlet property="spinner" destination="A01-N9-JfQ" id="azU-AV-3xR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uS-AD-Efb" userLabel="First Responder" sceneMemberID="firstResponder"/>

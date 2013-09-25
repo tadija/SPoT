@@ -9,12 +9,13 @@
 #import "ImageViewController.h"
 #import "AttributedStringVC.h"
 
-@interface ImageViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
+@interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
 @property (strong, nonatomic) UIPopoverController *urlPopover;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation ImageViewController
@@ -45,13 +46,28 @@
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        if (image) {
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        }
+        // fetch the image in another thread
+        [self.spinner startAnimating];
+        NSURL *imageURL = self.imageURL;
+        dispatch_queue_t imageFetchQ = dispatch_queue_create("image downloader", NULL);
+        dispatch_async(imageFetchQ, ^{
+            //[NSThread sleepForTimeInterval:1.0];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            UIImage *image = [[UIImage alloc] initWithData:imageData];            
+            if (self.imageURL == imageURL) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (image) {
+                        self.scrollView.contentSize = image.size;
+                        self.imageView.image = image;
+                        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                        [self setImageZoom];
+                    }
+                    [self.spinner stopAnimating];
+                });
+            }
+        });
     }
 }
 
@@ -103,9 +119,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self.scrollView addSubview:self.imageView];
-    self.scrollView.delegate = self;
     [self resetImage];
+    self.scrollView.delegate = self;
     self.titleBarButtonItem.title = self.title;
     [self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 }
@@ -113,12 +130,8 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    // set min, max and initial zoom scale
-    double minScale = [self imageMinScale];
-    self.scrollView.minimumZoomScale = minScale;
-    self.scrollView.maximumZoomScale = 5.0;
-    self.scrollView.zoomScale = minScale;
+
+    [self setImageZoom];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -138,6 +151,17 @@
     double widthScale = self.scrollView.bounds.size.width / self.imageView.image.size.width;
     double heightScale = self.scrollView.bounds.size.height / self.imageView.image.size.height;
     return MIN(widthScale, heightScale);
+}
+
+- (void)setImageZoom
+{
+    // set min, max and initial zoom scale
+    double minScale = [self imageMinScale];
+    if (minScale < DBL_MAX) {
+        self.scrollView.minimumZoomScale = minScale;
+        self.scrollView.maximumZoomScale = 5.0;
+        self.scrollView.zoomScale = minScale;
+    }
 }
 
 - (void)centerImageView
