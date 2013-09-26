@@ -9,6 +9,7 @@
 #import "ImageViewController.h"
 #import "AttributedStringVC.h"
 #import "UIApplication+NetworkActivity.h"
+#import "DataCacher.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
 @property (strong, nonatomic) UIPopoverController *urlPopover;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) DataCacher *dataCacher;
 @end
 
 @implementation ImageViewController
@@ -41,6 +43,12 @@
     [self resetImage];
 }
 
+- (DataCacher *)dataCacher
+{
+    if (!_dataCacher) _dataCacher = [[DataCacher alloc] init];
+    return _dataCacher;
+}
+
 - (void)resetImage
 {
     if (self.scrollView) {
@@ -52,10 +60,17 @@
         NSURL *imageURL = self.imageURL;
         dispatch_queue_t imageFetchQ = dispatch_queue_create("image downloader", NULL);
         dispatch_async(imageFetchQ, ^{
-            //[NSThread sleepForTimeInterval:1.0];
-            [[UIApplication sharedApplication] showNetworkActivityIndicator];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-            [[UIApplication sharedApplication] hideNetworkActivityIndicator];
+            
+            // if image data is not already cached fetch it from flickr
+            NSData *imageData = nil;
+            imageData = [self.dataCacher readCacheDataForKey:[imageURL absoluteString]];
+            if (!imageData) {
+                [[UIApplication sharedApplication] showNetworkActivityIndicator];
+                imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                [[UIApplication sharedApplication] hideNetworkActivityIndicator];
+                [self.dataCacher writeCacheData:imageData withKey:[imageURL absoluteString]];
+            }
+            
             UIImage *image = [[UIImage alloc] initWithData:imageData];            
             if (self.imageURL == imageURL) {
                 dispatch_async(dispatch_get_main_queue(), ^{

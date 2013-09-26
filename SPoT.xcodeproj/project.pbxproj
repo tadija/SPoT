@@ -11,6 +11,7 @@
 		8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */; };
 		8B2C6FB817EDE051009C90C4 /* RecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */; };
 		8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */; };
+		8B31733F17F370A800B21FF4 /* DataCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31733E17F370A800B21FF4 /* DataCacher.m */; };
 		8B45CF4E17F2DC4D009F316B /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */; };
 		8B6B69EB17EF9985008475C2 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B69EA17EF9985008475C2 /* iPad.storyboard */; };
 		8B6B69EE17EFA202008475C2 /* AttributedStringVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B69ED17EFA202008475C2 /* AttributedStringVC.m */; };
@@ -39,6 +40,8 @@
 		8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotosTVC.m; sourceTree = "<group>"; };
 		8B2C6FB917EDE4FE009C90C4 /* StanfordPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordPhotosTVC.h; sourceTree = "<group>"; };
 		8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosTVC.m; sourceTree = "<group>"; };
+		8B31733D17F370A800B21FF4 /* DataCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCacher.h; sourceTree = "<group>"; };
+		8B31733E17F370A800B21FF4 /* DataCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCacher.m; sourceTree = "<group>"; };
 		8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
 		8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+NetworkActivity.m"; sourceTree = "<group>"; };
 		8B6B69EA17EF9985008475C2 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */,
 				8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */,
 				8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */,
+				8B31733D17F370A800B21FF4 /* DataCacher.h */,
+				8B31733E17F370A800B21FF4 /* DataCacher.m */,
 				8BAC42EA17EA53B400A9CC7C /* FlickrFetcher */,
 				8BAC42C517EA46F400A9CC7C /* Supporting Files */,
 			);
@@ -236,6 +241,7 @@
 				8BAC42E917EA51F900A9CC7C /* FlickrPhotoTVC.m in Sources */,
 				8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */,
 				8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */,
+				8B31733F17F370A800B21FF4 /* DataCacher.m in Sources */,
 				8BAC42EE17EA53B400A9CC7C /* FlickrFetcher.m in Sources */,
 				8B45CF4E17F2DC4D009F316B /* UIApplication+NetworkActivity.m in Sources */,
 				8B6B69EE17EFA202008475C2 /* AttributedStringVC.m in Sources */,

@@ -9,6 +9,7 @@
 #import "StanfordTagsTVC.h"
 #import "FlickrFetcher.h"
 #import "UIApplication+NetworkActivity.h"
+#import "DataCacher.h"
 
 @implementation StanfordTagsTVC
 
@@ -17,6 +18,9 @@
     [super viewDidLoad];
     [self loadStanfordPhotosFromFlickr];
     [self.refreshControl addTarget:self action:@selector(loadStanfordPhotosFromFlickr) forControlEvents:UIControlEventValueChanged];
+    // testing cache
+    DataCacher *dataCacher = [[DataCacher alloc] init];
+    [dataCacher clearCache];
 }
 
 - (void)loadStanfordPhotosFromFlickr

@@ -30,7 +30,9 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Image"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
-                    NSURL *url = [FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:FlickrPhotoFormatLarge];
+                    // set photo size original if on iPad, large on iPhone
+                    FlickrPhotoFormat photoSize = (self.splitViewController) ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
+                    NSURL *url = [FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:photoSize];
                     [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                     [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
                     [self transferSplitViewBarButtonItemToViewController:segue.destinationViewController];
