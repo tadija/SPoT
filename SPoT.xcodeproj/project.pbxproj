@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B2C6FAF17EB9A44009C90C4 /* FlickrTagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */; };
-		8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */; };
-		8B2C6FB817EDE051009C90C4 /* RecentPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */; };
-		8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */; };
 		8B31733F17F370A800B21FF4 /* DataCacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31733E17F370A800B21FF4 /* DataCacher.m */; };
 		8B45CF4E17F2DC4D009F316B /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */; };
 		8B6B69EB17EF9985008475C2 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B69EA17EF9985008475C2 /* iPad.storyboard */; };
@@ -26,20 +22,11 @@
 		8BAC42D517EA46F400A9CC7C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BAC42D417EA46F400A9CC7C /* Default-568h@2x.png */; };
 		8BAC42D817EA46F400A9CC7C /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAC42D617EA46F400A9CC7C /* iPhone.storyboard */; };
 		8BAC42E317EA49F900A9CC7C /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC42E217EA49F900A9CC7C /* ImageViewController.m */; };
-		8BAC42E917EA51F900A9CC7C /* FlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC42E817EA51F900A9CC7C /* FlickrPhotoTVC.m */; };
 		8BAC42EE17EA53B400A9CC7C /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC42ED17EA53B400A9CC7C /* FlickrFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
-		8B2C6FAD17EB9A44009C90C4 /* FlickrTagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTagsTVC.h; sourceTree = "<group>"; };
-		8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTagsTVC.m; sourceTree = "<group>"; };
-		8B2C6FB317EBB689009C90C4 /* StanfordTagsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordTagsTVC.h; sourceTree = "<group>"; };
-		8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordTagsTVC.m; sourceTree = "<group>"; };
-		8B2C6FB617EDE051009C90C4 /* RecentPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotosTVC.h; sourceTree = "<group>"; };
-		8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotosTVC.m; sourceTree = "<group>"; };
-		8B2C6FB917EDE4FE009C90C4 /* StanfordPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordPhotosTVC.h; sourceTree = "<group>"; };
-		8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosTVC.m; sourceTree = "<group>"; };
 		8B31733D17F370A800B21FF4 /* DataCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCacher.h; sourceTree = "<group>"; };
 		8B31733E17F370A800B21FF4 /* DataCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCacher.m; sourceTree = "<group>"; };
 		8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
@@ -63,8 +50,6 @@
 		8BAC42D717EA46F400A9CC7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		8BAC42E117EA49F900A9CC7C /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		8BAC42E217EA49F900A9CC7C /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
-		8BAC42E717EA51F900A9CC7C /* FlickrPhotoTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoTVC.h; sourceTree = "<group>"; };
-		8BAC42E817EA51F900A9CC7C /* FlickrPhotoTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoTVC.m; sourceTree = "<group>"; };
 		8BAC42EB17EA53B400A9CC7C /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		8BAC42EC17EA53B400A9CC7C /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		8BAC42ED17EA53B400A9CC7C /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -116,20 +101,10 @@
 			children = (
 				8BAC42D617EA46F400A9CC7C /* iPhone.storyboard */,
 				8B6B69EA17EF9985008475C2 /* iPad.storyboard */,
-				8B6B69EC17EFA202008475C2 /* AttributedStringVC.h */,
-				8B6B69ED17EFA202008475C2 /* AttributedStringVC.m */,
-				8B2C6FAD17EB9A44009C90C4 /* FlickrTagsTVC.h */,
-				8B2C6FAE17EB9A44009C90C4 /* FlickrTagsTVC.m */,
-				8B2C6FB317EBB689009C90C4 /* StanfordTagsTVC.h */,
-				8B2C6FB417EBB689009C90C4 /* StanfordTagsTVC.m */,
-				8BAC42E717EA51F900A9CC7C /* FlickrPhotoTVC.h */,
-				8BAC42E817EA51F900A9CC7C /* FlickrPhotoTVC.m */,
-				8B2C6FB917EDE4FE009C90C4 /* StanfordPhotosTVC.h */,
-				8B2C6FBA17EDE4FE009C90C4 /* StanfordPhotosTVC.m */,
-				8B2C6FB617EDE051009C90C4 /* RecentPhotosTVC.h */,
-				8B2C6FB717EDE051009C90C4 /* RecentPhotosTVC.m */,
 				8BAC42E117EA49F900A9CC7C /* ImageViewController.h */,
 				8BAC42E217EA49F900A9CC7C /* ImageViewController.m */,
+				8B6B69EC17EFA202008475C2 /* AttributedStringVC.h */,
+				8B6B69ED17EFA202008475C2 /* AttributedStringVC.m */,
 				8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */,
 				8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */,
 				8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */,
@@ -235,17 +210,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BAC42CB17EA46F400A9CC7C /* main.m in Sources */,
-				8B2C6FAF17EB9A44009C90C4 /* FlickrTagsTVC.m in Sources */,
 				8BAC42CF17EA46F400A9CC7C /* AppDelegate.m in Sources */,
 				8BAC42E317EA49F900A9CC7C /* ImageViewController.m in Sources */,
-				8BAC42E917EA51F900A9CC7C /* FlickrPhotoTVC.m in Sources */,
-				8B2C6FBB17EDE4FE009C90C4 /* StanfordPhotosTVC.m in Sources */,
-				8B2C6FB517EBB689009C90C4 /* StanfordTagsTVC.m in Sources */,
 				8B31733F17F370A800B21FF4 /* DataCacher.m in Sources */,
 				8BAC42EE17EA53B400A9CC7C /* FlickrFetcher.m in Sources */,
 				8B45CF4E17F2DC4D009F316B /* UIApplication+NetworkActivity.m in Sources */,
 				8B6B69EE17EFA202008475C2 /* AttributedStringVC.m in Sources */,
-				8B2C6FB817EDE051009C90C4 /* RecentPhotosTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
