@@ -12,12 +12,13 @@
 
 @implementation Photo
 
-@dynamic unique;
-@dynamic title;
-@dynamic subtitle;
 @dynamic imageURL;
-@dynamic thumbnailURL;
 @dynamic lastViewedDate;
+@dynamic subtitle;
+@dynamic thumbnailURL;
+@dynamic title;
+@dynamic unique;
+@dynamic thumbnail;
 @dynamic tags;
 
 @end

@@ -8,13 +8,14 @@
 
 #import "PhotosWithTagsCDTVC.h"
 #import "Photo.h"
+#import "FlickrFetcher.h"
 
 @implementation PhotosWithTagsCDTVC
 
 - (void)setTag:(Tag *)tag
 {
     _tag = tag;
-    self.title = tag.name;
+    self.title = [tag.name capitalizedString];
     [self setupFetchedResultsController];
 }
 
@@ -31,16 +32,10 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo"];
-    
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    cell.textLabel.text = photo.title;
-    cell.detailTextLabel.text = photo.subtitle;
-    
-    return cell;
+    photo.lastViewedDate = [NSDate date];
 }
 
 @end

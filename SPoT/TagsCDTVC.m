@@ -11,6 +11,30 @@
 
 @implementation TagsCDTVC
 
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    _managedObjectContext = managedObjectContext;
+    if (managedObjectContext) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+        request.predicate = [NSPredicate predicateWithFormat:@"NOT (name IN %@)", @[@"cs193pspot", @"portrait", @"landscape"]];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    } else {
+        self.fetchedResultsController = nil;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tag"];
+    
+    Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [tag.name capitalizedString];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photos", [tag.photos count]];
+    
+    return cell;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = nil;
@@ -27,30 +51,6 @@
             }
         }
     }
-}
-
-- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
-{
-    _managedObjectContext = managedObjectContext;
-    if (managedObjectContext) {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-        request.predicate = nil; // all tags
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    } else {
-        self.fetchedResultsController = nil;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tag"];
-    
-    Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = tag.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photos", [tag.photos count]];
-    
-    return cell;
 }
 
 @end

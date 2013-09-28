@@ -111,7 +111,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="38s-Ty-IjT" kind="push" identifier="Show Image" id="kBn-7B-coh"/>
+                                    <segue destination="38s-Ty-IjT" kind="push" identifier="setImageURL:" id="kBn-7B-coh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -126,16 +126,16 @@
             </objects>
             <point key="canvasLocation" x="954" y="981"/>
         </scene>
-        <!--Table View Controller - Recent photos-->
+        <!--Recent PhotosCDTVC - Recent photos-->
         <scene sceneID="Nzy-0C-lfL">
             <objects>
-                <tableViewController id="ny8-e8-AeH" sceneMemberID="viewController">
+                <tableViewController id="ny8-e8-AeH" customClass="RecentPhotosCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Uf-L4-EUq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo" textLabel="ZRO-fX-v4d" detailTextLabel="jeF-k8-Q26" style="IBUITableViewCellStyleSubtitle" id="AhG-of-gbC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="ZRO-fX-v4d" detailTextLabel="jeF-k8-Q26" style="IBUITableViewCellStyleSubtitle" id="AhG-of-gbC">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -160,7 +160,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="38s-Ty-IjT" kind="push" identifier="Show Image" id="Tec-3O-H7x"/>
+                                    <segue destination="38s-Ty-IjT" kind="push" identifier="setImageURL:" id="Tec-3O-H7x"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -172,7 +172,7 @@
                     <navigationItem key="navigationItem" title="Recent photos" id="KK7-Mw-XNB">
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="h8j-dL-aCH">
                             <connections>
-                                <action selector="clearRecents:" destination="ny8-e8-AeH" id="8Qe-qN-kcS"/>
+                                <action selector="clearRecents:" destination="ny8-e8-AeH" id="Kqe-gP-FhT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -263,6 +263,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Tec-3O-H7x"/>
+        <segue reference="kBn-7B-coh"/>
     </inferredMetricsTieBreakers>
 </document>

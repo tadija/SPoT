@@ -102,8 +102,8 @@
     return data;
 }
 
-#define IPHONE_CACHE_SIZE 1024*1024*2
-#define IPAD_CACHE_SIZE 1024*1024*5
+#define IPHONE_CACHE_SIZE 1024*1024*5
+#define IPAD_CACHE_SIZE 1024*1024*10
 - (void)limitCacheSize
 {
     NSDirectoryEnumerator *dirEnum = [self.fileManager enumeratorAtURL:self.cachePath

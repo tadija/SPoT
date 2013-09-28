@@ -9,13 +9,20 @@
 #import "StanfordTagsCDTVC.h"
 #import "FlickrFetcher.h"
 #import "Photo+Flickr.h"
-#import "DebugManagedDocument.h"
+#import "SharedDocumentHandler.h"
+#import "UIApplication+NetworkActivity.h"
 
 @interface StanfordTagsCDTVC()
 @property (nonatomic, strong) UIManagedDocument *document;
 @end
 
 @implementation StanfordTagsCDTVC
+
+- (UIManagedDocument *)document
+{
+    if (!_document) _document = [SharedDocumentHandler sharedInstance].document;
+    return _document;
+}
 
 - (void)viewDidLoad
 {
@@ -26,28 +33,27 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.managedObjectContext) [self useStanfordDocument];
+    if (!self.managedObjectContext) [self useSharedDocument];
 }
 
-- (void)useStanfordDocument
+- (void)useSharedDocument
 {
-    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    url = [url URLByAppendingPathComponent:@"Stanford Document"];
-    self.document = [[UIManagedDocument alloc] initWithFileURL:url];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
-        [self.document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+    // if document does not exist, create it and get its managedObjectContext
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
+        [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             if (success) {
                 self.managedObjectContext = self.document.managedObjectContext;
                 [self refresh];
             }
         }];
+    // if the document is closed, open it and get its managedObjectContext
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
             if (success) {
                 self.managedObjectContext = self.document.managedObjectContext;
             }
         }];
+    // otherwise, just get its managedObjectContext
     } else {
         self.managedObjectContext = self.document.managedObjectContext;
     }
@@ -58,14 +64,16 @@
     [self.refreshControl beginRefreshing];
     dispatch_queue_t fetchQ = dispatch_queue_create("Flickr Fetch", NULL);
     dispatch_async(fetchQ, ^{
+        [[UIApplication sharedApplication] showNetworkActivityIndicator];
         NSArray *photos = [FlickrFetcher stanfordPhotos];
+        [[UIApplication sharedApplication] hideNetworkActivityIndicator];
         // put the photos in core data
         [self.managedObjectContext performBlock:^{
             for (NSDictionary *photo in photos) {
                 [Photo photoWithFlickrInfo:photo inManagedObjectContext:self.managedObjectContext];
             }
-            // save document after fetching photos
-            [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+            // force save the document after fetching photos
+            [[SharedDocumentHandler sharedInstance] saveDocument];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.refreshControl endRefreshing];
             });
