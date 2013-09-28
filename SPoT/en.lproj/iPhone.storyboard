@@ -25,16 +25,16 @@
             </objects>
             <point key="canvasLocation" x="-712" y="1338"/>
         </scene>
-        <!--Stanford TagsTVC - Stanford photos-->
+        <!--Stanford TagsCDTVC - Stanford photos-->
         <scene sceneID="IJf-F7-Nl5">
             <objects>
-                <tableViewController id="5mN-Rg-Ydb" customClass="StanfordTagsTVC" sceneMemberID="viewController">
+                <tableViewController id="5mN-Rg-Ydb" customClass="StanfordTagsCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VIA-1O-ei7">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tag Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tag Cell" textLabel="EH8-kQ-znj" detailTextLabel="8Mz-Ka-GYe" style="IBUITableViewCellStyleSubtitle" id="3Le-10-YHX">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tag Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tag" textLabel="EH8-kQ-znj" detailTextLabel="8Mz-Ka-GYe" style="IBUITableViewCellStyleSubtitle" id="3Le-10-YHX">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -59,7 +59,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="OgI-M7-pLF" kind="push" identifier="Show photos with tag" id="TPY-il-NqZ"/>
+                                    <segue destination="OgI-M7-pLF" kind="push" identifier="setTag:" id="TPY-il-NqZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,16 +77,16 @@
             </objects>
             <point key="canvasLocation" x="462" y="978"/>
         </scene>
-        <!--Stanford PhotosTVC-->
+        <!--Photos With TagsCDTVC-->
         <scene sceneID="NUj-73-644">
             <objects>
-                <tableViewController id="OgI-M7-pLF" customClass="StanfordPhotosTVC" sceneMemberID="viewController">
+                <tableViewController id="OgI-M7-pLF" customClass="PhotosWithTagsCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4fh-Oj-pVL">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo" textLabel="dTr-9M-PBW" detailTextLabel="8Bb-ss-PS2" style="IBUITableViewCellStyleSubtitle" id="XGL-Lj-usP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="dTr-9M-PBW" detailTextLabel="8Bb-ss-PS2" style="IBUITableViewCellStyleSubtitle" id="XGL-Lj-usP">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="954" y="981"/>
         </scene>
-        <!--Recent PhotosTVC - Recent photos-->
+        <!--Table View Controller - Recent photos-->
         <scene sceneID="Nzy-0C-lfL">
             <objects>
-                <tableViewController id="ny8-e8-AeH" customClass="RecentPhotosTVC" sceneMemberID="viewController">
+                <tableViewController id="ny8-e8-AeH" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Uf-L4-EUq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,6 +263,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kBn-7B-coh"/>
+        <segue reference="Tec-3O-H7x"/>
     </inferredMetricsTieBreakers>
 </document>
