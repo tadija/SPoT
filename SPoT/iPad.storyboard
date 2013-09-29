@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-2367" y="-905"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="AtR-iI-ISh">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="fGy-HS-4Ob" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="fGy-HS-4Ob" customClass="MainTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="NiQ-eb-pE2">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -39,16 +39,16 @@
             </objects>
             <point key="canvasLocation" x="-1380" y="-905"/>
         </scene>
-        <!--Stanford TagsTVC - Stanford photos-->
+        <!--Stanford TagsCDTVC - Stanford photos-->
         <scene sceneID="9nH-Gw-mU6">
             <objects>
-                <tableViewController id="rX6-bd-T0A" customClass="StanfordTagsTVC" sceneMemberID="viewController">
+                <tableViewController id="rX6-bd-T0A" customClass="StanfordTagsCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wnR-6K-iAW">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tag Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tag Cell" textLabel="R9l-a5-rdh" detailTextLabel="it6-Bi-xzI" style="IBUITableViewCellStyleSubtitle" id="6oi-p9-TJ7">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tag Cell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tag" textLabel="R9l-a5-rdh" detailTextLabel="it6-Bi-xzI" style="IBUITableViewCellStyleSubtitle" id="6oi-p9-TJ7">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -73,7 +73,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="0nv-Ix-ihd" kind="push" identifier="Show photos with tag" id="QTf-wE-fKW"/>
+                                    <segue destination="0nv-Ix-ihd" kind="push" identifier="setTag:" id="QTf-wE-fKW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo" textLabel="wDG-cS-5Pa" detailTextLabel="ZVp-uO-Pkv" style="IBUITableViewCellStyleSubtitle" id="KJj-fS-vO5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="wDG-cS-5Pa" detailTextLabel="ZVp-uO-Pkv" style="IBUITableViewCellStyleSubtitle" id="KJj-fS-vO5">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -125,7 +125,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="IcL-eP-dEB" kind="replace" identifier="Show Image" splitViewControllerTargetIndex="1" id="RUO-YE-rbC"/>
+                                    <segue destination="IcL-eP-dEB" kind="replace" identifier="setImageURL:" splitViewControllerTargetIndex="1" id="RUO-YE-rbC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -140,16 +140,16 @@
             </objects>
             <point key="canvasLocation" x="210" y="-1395"/>
         </scene>
-        <!--Recent PhotosTVC - Recent photos-->
+        <!--Recent PhotosCDTVC - Recent photos-->
         <scene sceneID="kH5-2J-AY2">
             <objects>
-                <tableViewController id="2Le-h7-fSo" customClass="RecentPhotosTVC" sceneMemberID="viewController">
+                <tableViewController id="2Le-h7-fSo" customClass="RecentPhotosCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Vtj-RH-xhf">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo" textLabel="N7R-qX-rWq" detailTextLabel="fmS-wM-sLj" style="IBUITableViewCellStyleSubtitle" id="CgI-sM-HON">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="N7R-qX-rWq" detailTextLabel="fmS-wM-sLj" style="IBUITableViewCellStyleSubtitle" id="CgI-sM-HON">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -174,7 +174,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="IcL-eP-dEB" kind="replace" identifier="Show Image" splitViewControllerTargetIndex="1" id="Wwb-CW-8PW"/>
+                                    <segue destination="IcL-eP-dEB" kind="replace" identifier="setImageURL:" splitViewControllerTargetIndex="1" id="Wwb-CW-8PW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -200,11 +200,11 @@
             <objects>
                 <viewController id="cW4-ql-g35" customClass="AttributedStringVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYf-2k-imV">
-                        <rect key="frame" x="0.0" y="20" width="300" height="340"/>
+                        <rect key="frame" x="0.0" y="20" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKv-I3-07s">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="340"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -338,6 +338,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RUO-YE-rbC"/>
+        <segue reference="LSb-IS-uhc"/>
     </inferredMetricsTieBreakers>
 </document>

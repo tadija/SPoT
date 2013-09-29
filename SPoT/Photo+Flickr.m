@@ -30,10 +30,14 @@
         } else if (![matches count]) { // if it doesnt exists in db, insert it
             photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
             
+            // set photo size original if on iPad, large on iPhone
+            BOOL iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+            FlickrPhotoFormat photoSize = (iPad) ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
+            
             photo.unique = [photoDictionary[FLICKR_PHOTO_ID] description];
             photo.title = [photoDictionary[FLICKR_PHOTO_TITLE] description];
             photo.subtitle = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
-            photo.imageURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
+            photo.imageURL = [[FlickrFetcher urlForPhoto:photoDictionary format:photoSize] absoluteString];
             photo.thumbnailURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatSquare] absoluteString];
             // along with its tags
             NSMutableSet *tags = [[NSMutableSet alloc] init];

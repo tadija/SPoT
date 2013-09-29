@@ -10,8 +10,9 @@
 #import "AttributedStringVC.h"
 #import "UIApplication+NetworkActivity.h"
 #import "DataCacher.h"
+#import "MainTabBarController.h"
 
-@interface ImageViewController () <UIScrollViewDelegate>
+@interface ImageViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
@@ -54,6 +55,7 @@
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
+        [[[self.splitViewController.viewControllers firstObject] masterPopover] dismissPopoverAnimated:YES];
         
         // fetch the image in another thread
         [self.spinner startAnimating];
@@ -112,22 +114,15 @@
     }
 }
 
-#pragma mark Set button for master popover
+#pragma mark Set master popover button
 
-- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
     if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
-    if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+    if (barButtonItem) [toolbarItems insertObject:barButtonItem atIndex:0];
     self.toolbar.items = toolbarItems;
-    _splitViewBarButtonItem = splitViewBarButtonItem;
-}
-
-- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
-{
-    if (splitViewBarButtonItem != _splitViewBarButtonItem) {
-        [self handleSplitViewBarButtonItem:splitViewBarButtonItem];
-    }
+    _splitViewBarButtonItem = barButtonItem;
 }
 
 #pragma mark UIViewcontroller lifecycle
@@ -139,8 +134,8 @@
     [self.scrollView addSubview:self.imageView];
     [self resetImage];
     self.scrollView.delegate = self;
+    [self setSplitViewBarButtonItem:self.splitViewBarButtonItem];
     self.titleBarButtonItem.title = self.title;
-    [self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
 }
 
 - (void)viewDidLayoutSubviews
@@ -149,6 +144,8 @@
 
     [self setImageZoom];
 }
+
+#pragma mark Zooming and centering the image
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {

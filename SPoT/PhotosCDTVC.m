@@ -10,6 +10,11 @@
 #import "Photo.h"
 #import "UIApplication+NetworkActivity.h"
 #import "FlickrFetcher.h"
+#import "SplitViewBarButtonItemPresenter.h"
+#import "SharedDocumentHandler.h"
+
+@interface PhotosCDTVC() <UISplitViewControllerDelegate>
+@end
 
 @implementation PhotosCDTVC
 
@@ -32,6 +37,7 @@
             [[UIApplication sharedApplication] hideNetworkActivityIndicator];
             dispatch_async(dispatch_get_main_queue(), ^{
                 photo.thumbnail = thumbnailData;
+                [[SharedDocumentHandler sharedInstance] saveDocument];
             });
         });
     } else { // else get it from CoreData
@@ -41,6 +47,8 @@
     
     return cell;
 }
+
+#pragma mark Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -56,9 +64,30 @@
             NSURL *photoURL = [NSURL URLWithString:photo.imageURL];
             if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:photoURL];
+                [segue.destinationViewController setTitle:photo.title];
+                [self transferSplitViewBarButtonItemToViewController:segue.destinationViewController];
             }
         }
     }
+}
+
+#pragma mark SplitViewBarButtonItemPresenter
+
+- (id <SplitViewBarButtonItemPresenter>)splitViewDetailWithBarButtonItem
+{
+    // return detail view controller which conforms to protocol of SplitViewBarButtonItemPresenter
+    id detailVC = [self.splitViewController.viewControllers lastObject];
+    if (![detailVC conformsToProtocol:@protocol(SplitViewBarButtonItemPresenter)]) {
+        detailVC = nil;
+    }
+    return detailVC;
+}
+
+- (void)transferSplitViewBarButtonItemToViewController:(id)destinationViewController
+{
+    UIBarButtonItem *splitViewBarButtonItem = [[self splitViewDetailWithBarButtonItem] splitViewBarButtonItem];
+    [[self splitViewDetailWithBarButtonItem] setSplitViewBarButtonItem:nil];
+    if (splitViewBarButtonItem) [destinationViewController setSplitViewBarButtonItem:splitViewBarButtonItem];
 }
 
 @end

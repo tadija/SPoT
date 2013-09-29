@@ -21,6 +21,7 @@
 		8B31738C17F7295B00B21FF4 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31738B17F7295B00B21FF4 /* Photo.m */; };
 		8B31738F17F72B7C00B21FF4 /* PhotosCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31738E17F72B7C00B21FF4 /* PhotosCDTVC.m */; };
 		8B31739217F72C3D00B21FF4 /* RecentPhotosCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31739117F72C3D00B21FF4 /* RecentPhotosCDTVC.m */; };
+		8B31739517F8B26E00B21FF4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31739417F8B26E00B21FF4 /* MainTabBarController.m */; };
 		8B45CF4E17F2DC4D009F316B /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */; };
 		8B6B69EB17EF9985008475C2 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B69EA17EF9985008475C2 /* iPad.storyboard */; };
 		8B6B69EE17EFA202008475C2 /* AttributedStringVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B69ED17EFA202008475C2 /* AttributedStringVC.m */; };
@@ -39,7 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
 		8B31733D17F370A800B21FF4 /* DataCacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCacher.h; sourceTree = "<group>"; };
 		8B31733E17F370A800B21FF4 /* DataCacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCacher.m; sourceTree = "<group>"; };
 		8B31734A17F637AD00B21FF4 /* SPoT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPoT.xcdatamodel; sourceTree = "<group>"; };
@@ -66,6 +66,9 @@
 		8B31738E17F72B7C00B21FF4 /* PhotosCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCDTVC.m; sourceTree = "<group>"; };
 		8B31739017F72C3D00B21FF4 /* RecentPhotosCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotosCDTVC.h; sourceTree = "<group>"; };
 		8B31739117F72C3D00B21FF4 /* RecentPhotosCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotosCDTVC.m; sourceTree = "<group>"; };
+		8B31739317F8B26E00B21FF4 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		8B31739417F8B26E00B21FF4 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		8B31739617F8C13D00B21FF4 /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
 		8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
 		8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+NetworkActivity.m"; sourceTree = "<group>"; };
 		8B6B69EA17EF9985008475C2 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
@@ -141,7 +144,7 @@
 		8B31734E17F6385300B21FF4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8B1132B417F0FC430026C8FA /* SplitViewBarButtonItemPresenter.h */,
+				8B31739617F8C13D00B21FF4 /* SplitViewBarButtonItemPresenter.h */,
 				8B45CF4C17F2DC4D009F316B /* UIApplication+NetworkActivity.h */,
 				8B45CF4D17F2DC4D009F316B /* UIApplication+NetworkActivity.m */,
 				8B31733D17F370A800B21FF4 /* DataCacher.h */,
@@ -189,6 +192,8 @@
 				8B31737617F6668800B21FF4 /* StanfordTagsCDTVC.m */,
 				8B31738D17F72B7C00B21FF4 /* PhotosCDTVC.h */,
 				8B31738E17F72B7C00B21FF4 /* PhotosCDTVC.m */,
+				8B31739317F8B26E00B21FF4 /* MainTabBarController.h */,
+				8B31739417F8B26E00B21FF4 /* MainTabBarController.m */,
 				8B31737817F66C4400B21FF4 /* PhotosWithTagsCDTVC.h */,
 				8B31737917F66C4400B21FF4 /* PhotosWithTagsCDTVC.m */,
 				8B31739017F72C3D00B21FF4 /* RecentPhotosCDTVC.h */,
@@ -301,6 +306,7 @@
 				8B31739217F72C3D00B21FF4 /* RecentPhotosCDTVC.m in Sources */,
 				8BAC42CB17EA46F400A9CC7C /* main.m in Sources */,
 				8BAC42CF17EA46F400A9CC7C /* AppDelegate.m in Sources */,
+				8B31739517F8B26E00B21FF4 /* MainTabBarController.m in Sources */,
 				8BAC42E317EA49F900A9CC7C /* ImageViewController.m in Sources */,
 				8B31738F17F72B7C00B21FF4 /* PhotosCDTVC.m in Sources */,
 				8B31733F17F370A800B21FF4 /* DataCacher.m in Sources */,
