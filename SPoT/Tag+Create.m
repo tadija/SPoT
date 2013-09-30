@@ -10,6 +10,16 @@
 
 @implementation Tag (Create)
 
++ (NSString *)allTag
+{
+    return @"All";
+}
+
++ (NSArray *)hiddenTags
+{
+    return @[@"cs193pspot", @"portrait", @"landscape"];
+}
+
 + (Tag *)tagWithName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Tag *tag = nil;
@@ -28,6 +38,7 @@
         } else if (![matches count]) { // if it doesnt exists in db, insert it
             tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:context];
             tag.name = name;
+            tag.sortOrder = ([name isEqualToString:[self allTag]]) ? @1 : @2;
         } else { // if it exists in db, get it
             tag = [matches lastObject];
         }

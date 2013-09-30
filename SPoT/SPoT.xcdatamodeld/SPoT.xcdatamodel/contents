@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="firstLetter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastViewedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,10 +14,11 @@
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="tags" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-281" positionY="117" width="128" height="163"/>
-        <element name="Tag" positionX="-56" positionY="225" width="128" height="73"/>
+        <element name="Photo" positionX="-281" positionY="117" width="128" height="193"/>
+        <element name="Tag" positionX="-56" positionY="225" width="128" height="88"/>
     </elements>
 </model>

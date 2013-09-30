@@ -35,7 +35,7 @@
     if (self.context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastViewedDate" ascending:NO selector:@selector(compare:)]];
-        request.predicate = [NSPredicate predicateWithFormat:@"lastViewedDate != nil"];
+        request.predicate = [NSPredicate predicateWithFormat:@"lastViewedDate != nil AND tags.@count > 0"];
         request.fetchLimit = MAX_RECENT_COUNT;
         
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];

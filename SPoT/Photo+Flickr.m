@@ -36,12 +36,18 @@
             
             photo.unique = [photoDictionary[FLICKR_PHOTO_ID] description];
             photo.title = [photoDictionary[FLICKR_PHOTO_TITLE] description];
+            photo.firstLetter = [photo.title substringToIndex:1];
             photo.subtitle = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
             photo.imageURL = [[FlickrFetcher urlForPhoto:photoDictionary format:photoSize] absoluteString];
             photo.thumbnailURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatSquare] absoluteString];
             // along with its tags
             NSMutableSet *tags = [[NSMutableSet alloc] init];
+            Tag *allTag = [Tag tagWithName:[Tag allTag] inManagedObjectContext:context];
+            [tags addObject:allTag];
             for (NSString *tagName in [[photoDictionary[FLICKR_TAGS] description] componentsSeparatedByString:@" "]) {
+                if (![[Tag hiddenTags] containsObject:tagName]) {
+                    if (!photo.firstTag) photo.firstTag = tagName;
+                }
                 Tag *tag = [Tag tagWithName:tagName inManagedObjectContext:context];
                 [tags addObject:tag];
             }

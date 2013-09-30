@@ -7,22 +7,39 @@
 //
 
 #import "TagsCDTVC.h"
-#import "Tag.h"
+#import "Tag+Create.h"
+
+@interface TagsCDTVC() <UISearchBarDelegate>
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) NSPredicate *searchPredicate;
+@end
 
 @implementation TagsCDTVC
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     _managedObjectContext = managedObjectContext;
-    if (managedObjectContext) {
+    [self refreshFetchedResultsController];
+}
+
+- (void)refreshFetchedResultsController
+{
+    if (self.managedObjectContext) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-        request.predicate = [NSPredicate predicateWithFormat:@"NOT (name IN %@)", @[@"cs193pspot", @"portrait", @"landscape"]];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+        NSSortDescriptor *allTagIsFirst = [NSSortDescriptor sortDescriptorWithKey:@"sortOrder" ascending:YES selector:@selector(compare:)];
+        NSSortDescriptor *sortByTagName = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        request.sortDescriptors = @[allTagIsFirst, sortByTagName];
+        request.predicate = [NSPredicate predicateWithFormat:@"NOT (name IN %@)", [Tag hiddenTags]];
+        if (self.searchPredicate) {
+            request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[request.predicate, self.searchPredicate]];
+        }
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     } else {
         self.fetchedResultsController = nil;
     }
 }
+
+#pragma mark UITableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -34,6 +51,8 @@
     
     return cell;
 }
+
+#pragma mark Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -50,6 +69,42 @@
                 [segue.destinationViewController performSelector:@selector(setTag:) withObject:tag];
             }
         }
+    }
+}
+
+#pragma mark UISearchBar
+
+- (UISearchBar *)searchBar {
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc]
+                      initWithFrame:self.navigationController.navigationBar.frame];
+        self.searchBar.delegate = self;
+    }
+    return _searchBar;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([searchText length]) {
+        self.searchPredicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", searchText];
+    } else {
+        self.searchPredicate = nil;
+    }
+    [self refreshFetchedResultsController];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
+- (IBAction)searchBarButtonPressed:(UIBarButtonItem *)sender
+{
+    if (self.tableView.tableHeaderView) {
+        self.tableView.tableHeaderView = nil;
+    } else {
+        self.tableView.tableHeaderView = self.searchBar;
+        [self.searchBar becomeFirstResponder];
     }
 }
 

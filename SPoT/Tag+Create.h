@@ -12,4 +12,8 @@
 
 + (Tag *)tagWithName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (NSString *)allTag;
+
++ (NSArray *)hiddenTags;
+
 @end

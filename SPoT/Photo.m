@@ -2,7 +2,7 @@
 //  Photo.m
 //  SPoT
 //
-//  Created by Marko Tadić on 28.9.13..
+//  Created by Marko Tadić on 30.9.13..
 //  Copyright (c) 2013. tadija. All rights reserved.
 //
 
@@ -15,10 +15,12 @@
 @dynamic imageURL;
 @dynamic lastViewedDate;
 @dynamic subtitle;
+@dynamic thumbnail;
 @dynamic thumbnailURL;
 @dynamic title;
 @dynamic unique;
-@dynamic thumbnail;
+@dynamic firstLetter;
+@dynamic firstTag;
 @dynamic tags;
 
 @end

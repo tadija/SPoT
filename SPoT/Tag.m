@@ -2,7 +2,7 @@
 //  Tag.m
 //  SPoT
 //
-//  Created by Marko Tadić on 28.9.13..
+//  Created by Marko Tadić on 30.9.13..
 //  Copyright (c) 2013. tadija. All rights reserved.
 //
 
@@ -13,6 +13,7 @@
 @implementation Tag
 
 @dynamic name;
+@dynamic sortOrder;
 @dynamic photos;
 
 @end

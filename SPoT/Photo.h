@@ -2,7 +2,7 @@
 //  Photo.h
 //  SPoT
 //
-//  Created by Marko Tadić on 28.9.13..
+//  Created by Marko Tadić on 30.9.13..
 //  Copyright (c) 2013. tadija. All rights reserved.
 //
 
@@ -16,10 +16,12 @@
 @property (nonatomic, retain) NSString * imageURL;
 @property (nonatomic, retain) NSDate * lastViewedDate;
 @property (nonatomic, retain) NSString * subtitle;
+@property (nonatomic, retain) NSData * thumbnail;
 @property (nonatomic, retain) NSString * thumbnailURL;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * unique;
-@property (nonatomic, retain) NSData * thumbnail;
+@property (nonatomic, retain) NSString * firstLetter;
+@property (nonatomic, retain) NSString * firstTag;
 @property (nonatomic, retain) NSSet *tags;
 @end
 
